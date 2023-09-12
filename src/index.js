@@ -15,6 +15,8 @@ async function main() {
       "http://localhost:3000",
       "http://login.alejandropb.net",
       "https://login.alejandropb.net",
+      "http://api-login.alejandropb.net",
+      "https://api-login.alejandropb.net",
       "https://*.alejandropb.net",
     ];
 
