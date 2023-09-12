@@ -1,4 +1,5 @@
-import jwt from "jsonwebtoken";
+import { validateJWT } from "../helpers/jwt.helper.js";
+import { Bearer } from "../models/Auth.js";
 import { User } from "../models/User.js";
 
 const checkAuth = async (req, res, next) =>{
@@ -8,12 +9,12 @@ const checkAuth = async (req, res, next) =>{
         token = req.cookies.AUTH_TOKEN;
     }
 
-    if(!token && req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+    if(!token && req.headers.authorization && req.headers.authorization.startsWith(Bearer)){
         token = req.headers.authorization.split(" ")[1];
     }
     
     try{
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = validateJWT(token);
 
         const user = await User.findByPk(decoded.id);
 
