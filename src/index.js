@@ -1,7 +1,23 @@
+import 'dotenv/config'; // env
 import app from './app.js';
+import { sequelize } from './config/database.js';
 
-const PORT = process.env.PORT || 4000;
+import './models/User.js';
 
-app.listen(PORT, () => {
-    console.log(`Server is listening on port: ${PORT}`);
-});
+async function main() {
+
+    try {
+        const PORT = process.env.PORT || 4000;
+        
+        await sequelize.sync();
+
+        app.listen(PORT, () => {
+            console.log(`Server is listening on port: ${PORT}`);
+        });
+
+    } catch(error) {
+        console.error('Error to run app:', error);
+    }
+}
+
+main();
