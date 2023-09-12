@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
 import { User } from "../models/User.js";
+import { AUTH_TOKEN } from "../models/Auth.js";
 import { generateJWT } from "../helpers/jwt.helper.js";
 
 export const login = async (req, res) => {
@@ -25,6 +26,13 @@ export const login = async (req, res) => {
     }
     
     const jwt = generateJWT(user.id, user.email, user.name);
+
+    res.cookie(AUTH_TOKEN, jwt, {
+        // 30 days
+        maxAge: 1000 * 60 * 60 * 24 * 30,
+        httpOnly: true,
+        sameSite: 'lax'
+    });
   
     return res.json({
         message: 'Successful login',
@@ -82,5 +90,11 @@ export const register = async (req, res) => {
 };
 
 export const getProfile = (req, res) => {
-  res.json({ message: "auth success", codeStatus: 200 });
+  res.json({ message: "Successful authentication", user: req.user });
 };
+
+export const logout = (req, res) => {
+    res.clearCookie(AUTH_TOKEN);
+
+    res.json({ message: "Successful logout" });
+}

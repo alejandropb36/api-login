@@ -18,3 +18,13 @@ content-type: application/json
     "birthDate": "1995-07-24",
     "password": "123456"
 }
+
+###
+
+POST http://127.0.0.1:4000/profile HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://127.0.0.1:4000/logout HTTP/1.1
+content-type: application/json
