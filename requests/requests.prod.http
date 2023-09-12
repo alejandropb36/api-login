@@ -1,0 +1,31 @@
+POST https://api-login.alejandropb.net/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "alejandro@mail.com",
+    "password": "123456"
+}
+
+###
+
+POST https://api-login.alejandropb.net/register HTTP/1.1
+content-type: application/json
+
+{
+    "id": "f056aadb-a264-4e44-bc71-6ef27bb30a55",
+    "email": "alejandro@mail.com",
+    "name": "Alejandro Ponce",
+    "birthDate": "1995-07-24",
+    "password": "123456"
+}
+
+###
+
+GET https://api-login.alejandropb.net/profile HTTP/1.1
+content-type: application/json
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYwNTZhYWRiLWEyNjQtNGU0NC1iYzcxLTZlZjI3YmIzMGE1NSIsImVtYWlsIjoiYWxlamFuZHJvQG1haWwuY29tIiwibmFtZSI6IkFsZWphbmRybyBQb25jZSIsImlhdCI6MTY5NDU0NjM4NCwiZXhwIjoxNjk3MTM4Mzg0fQ.QCkmKhrUl_OCMrWfbGJiGW5D9hm9-iobyyZEonR1F1Q
+
+###
+
+POST https://api-login.alejandropb.net/logout HTTP/1.1
+content-type: application/json

@@ -9,6 +9,8 @@ async function main() {
   try {
     // CORS
     const whitelist = [
+      "http://127.0.0.1",
+      "http://localhost",
       "http://127.0.0.1:4200",
       "http://127.0.0.1:3000",
       "http://localhost:4200",
@@ -17,7 +19,6 @@ async function main() {
       "https://login.alejandropb.net",
       "http://api-login.alejandropb.net",
       "https://api-login.alejandropb.net",
-      "https://*.alejandropb.net",
     ];
 
     const corsOptions = {
