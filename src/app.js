@@ -27,6 +27,7 @@ const corsOptions = {
       callback(new Error("Error de cors"));
     }
   },
+  credentials: true
 };
 
 app.use(cors(corsOptions));

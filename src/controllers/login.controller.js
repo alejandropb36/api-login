@@ -31,7 +31,8 @@ export const login = async (req, res) => {
         // 30 days
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
-        sameSite: 'lax'
+        sameSite: 'lax',
+        domain: `.${req.hostname}`
     });
   
     return res.json({

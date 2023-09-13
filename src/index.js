@@ -6,8 +6,6 @@ import "./models/User.js";
 
 async function main() {
   try {
-    
-
     const PORT = process.env.PORT || 4000;
 
     await sequelize.sync();
