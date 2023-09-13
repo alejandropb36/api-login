@@ -5,7 +5,34 @@ import cors from "cors";
 
 const app = express();
 // CORS
-app.use(cors({credentials: true}));
+const whitelist = [
+  "http://127.0.0.1",
+  "http://localhost",
+  "http://127.0.0.1:4200",
+  "http://127.0.0.1:3000",
+  "http://localhost:4200",
+  "http://localhost:3000",
+  "http://login.alejandropb.net",
+  "https://login.alejandropb.net",
+  "http://api-login.alejandropb.net",
+  "https://api-login.alejandropb.net",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if(!origin){//for bypassing postman req with  no origin
+      return callback(null, true);
+    }
+    if (whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Error de cors"));
+    }
+  },
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 // Middlewares
 app.use(express.json());
