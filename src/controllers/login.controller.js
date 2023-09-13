@@ -32,7 +32,7 @@ export const login = async (req, res) => {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
         sameSite: 'lax',
-        domain: `.${req.hostname}`
+        domain: process.env.COOKIE_DOMAIN
     });
   
     return res.json({
